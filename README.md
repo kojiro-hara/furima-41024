@@ -4,10 +4,21 @@
 | ------------------ | ------ | ------------------------- |
 | name               | string | null: false               |
 | reading            | string | null: false               |
+| birthday           | date   | null: false               |
+
+
+### Association
+- has_many :items
+- has_many :buys
+
+
+### Nickname テーブル
+
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
-| birthday           | date   | null: false               |
 
 
 ### Association
@@ -20,7 +31,6 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| image            | text       | null: false                    |
 | product_name     | string     | null: false                    |
 | text             | text       | null: false                    |
 | category         | string     | null: false                    |
