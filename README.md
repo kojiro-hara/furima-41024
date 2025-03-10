@@ -8,8 +8,8 @@
 
 
 ### Association
-- has_many :items
-- has_many :buys
+- has_one :nickname
+
 
 
 ### Nickname テーブル
@@ -29,50 +29,50 @@
 
 ### Items テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| product_name     | string     | null: false                    |
-| text             | text       | null: false                    |
-| category         | string     | null: false                    |
-| state            | string     | null: false                    |
-| burden           | string     | null: false                    |
-| region_of_origin | string     | null: false                    |
-| days             | date       | null: false                    |
-| price            | float      | null: false                    |
-| user             | references | null: false, foreign_key: true |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| product_name        | string     | null: false                    |
+| text                | text       | null: false                    |
+| category_id         | integer    | null: false, ActiveHash        |
+| state_id            | integer    | null: false, ActiveHash        |
+| burden_id           | integer    | null: false, ActiveHash        |
+| region_of_origin_id | integer    | null: false, ActiveHash        |
+| days_id             | integer    | null: false, ActiveHash        |
+| price               | float      | null: false                    |
+| nickname            | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :user
-- belongs_to :buy
+- belongs_to :nickname
+- has_one :buy
 
 
 ### Buys テーブル
 
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| nickname | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :user
-- has_one :item
-- belongs_to :shipping
+- belongs_to :nickname
+- belongs_to :item
+- has_one :shipping
 
 
 ### shipping テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| post_code    | string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| cities       | string     | null: false                    |
-| house_number | string     | null: false                    |
-| property     | string     |                                |
-| telephone    | string     | null: false                    |
-| buy          | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post_code_id  | integer    | null: false, ActiveHash        |
+| prefecture_id | integer    | null: false, ActiveHash        |
+| cities        | string     | null: false                    |
+| house_number  | string     | null: false                    |
+| property      | string     |                                |
+| telephone     | string     | null: false                    |
+| buy           | references | null: false, foreign_key: true |
 
 
 ### Association
-- has_one :buy
+- belongs_to :buy
