@@ -14,23 +14,22 @@
 
 ### Association
 - has_many :item
-
-
+- has_many :buy
 
 
 ### Items テーブル
 
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| product_name        | string     | null: false                    |
-| text                | text       | null: false                    |
-| category_id         | integer    | null: false, ActiveHash        |
-| state_id            | integer    | null: false, ActiveHash        |
-| burden_id           | integer    | null: false, ActiveHash        |
-| region_of_origin_id | integer    | null: false, ActiveHash        |
-| days_id             | integer    | null: false, ActiveHash        |
-| price               | bigint     | null: false                    |
-| user                | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| product_name  | string     | null: false                    |
+| text          | text       | null: false                    |
+| category_id   | integer    | null: false, ActiveHash        |
+| state_id      | integer    | null: false, ActiveHash        |
+| burden_id     | integer    | null: false, ActiveHash        |
+| prefecture_id | integer    | null: false, ActiveHash        |
+| days_id       | integer    | null: false, ActiveHash        |
+| price         | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -56,9 +55,9 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| post_code_id  | integer    | null: false, ActiveHash        |
+| post_code_id  | string     | null: false, ActiveHash        |
 | prefecture_id | integer    | null: false, ActiveHash        |
-| cities        | string     | null: false                    |
+| city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | property      | string     |                                |
 | telephone     | string     | null: false                    |
