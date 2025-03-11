@@ -2,28 +2,19 @@
 
 | Column             | Type   | Options                   |
 | ------------------ | ------ | ------------------------- |
-| name               | string | null: false               |
-| reading            | string | null: false               |
-| birthday           | date   | null: false               |
-
-
-### Association
-- has_one :nickname
-
-
-
-### Nickname テーブル
-
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
+| family_name        | string | null: false               |
+| first_name         | string | null: false               |
+| family_reading     | string | null: false               |
+| first_reading      | string | null: false               |
 | nickname           | string | null: false               |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
+| birthday           | string | null: false               |
 
 
 ### Association
-- has_many :items
-- has_many :buys
+- has_many :item
+
 
 
 
@@ -38,30 +29,30 @@
 | burden_id           | integer    | null: false, ActiveHash        |
 | region_of_origin_id | integer    | null: false, ActiveHash        |
 | days_id             | integer    | null: false, ActiveHash        |
-| price               | float      | null: false                    |
-| nickname            | references | null: false, foreign_key: true |
+| price               | bigint     | null: false                    |
+| user                | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :nickname
+- belongs_to :user
 - has_one :buy
 
 
 ### Buys テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| nickname | references | null: false, foreign_key: true |
-| item     | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :nickname
+- belongs_to :user
 - belongs_to :item
 - has_one :shipping
 
 
-### shipping テーブル
+### shippings テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
