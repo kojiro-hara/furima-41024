@@ -118,20 +118,27 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'ユーザーログイン' do
-    before do
-      @user = FactoryBot.create(:user)
+    context '正常系（新規登録が成功する）' do
+      it 'すべての項目が正しく入力されていれば登録できる' do
+        expect(@user).to be_valid
+      end
     end
+    context '異常系' do
+      before do
+        @user = FactoryBot.create(:user)
+      end
 
-    it 'emailが空ではログインできない' do
-      @user.email = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include "Email can't be blank"
-    end
+      it 'emailが空ではログインできない' do
+        @user.email = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Email can't be blank"
+      end
 
-    it 'passwordが空ではログインできない' do
-      @user.password = ''
-      @user.valid?
-      expect(@user.errors.full_messages).to include "Password can't be blank"
+      it 'passwordが空ではログインできない' do
+        @user.password = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include "Password can't be blank"
+      end
     end
   end
 end
