@@ -2,6 +2,13 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :state
+  belongs_to :burden
+  belongs_to :prefecture
+  belongs_to :days
+
 
   validates :product_name, presence: true, length: { maximum: 40 }
   validates :text, presence: true, length: { maximum: 1000 }
