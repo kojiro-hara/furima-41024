@@ -27,6 +27,11 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @categories = Category.all
+    @states = State.all
+    @burdens = Burden.all
+    @prefectures = Prefecture.all
+    @days = Days.all
     redirect_to root_path unless current_user == @item.user
   end
   
