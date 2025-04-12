@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  
 
   def index
     @items = Item.all.order(created_at: :desc)
@@ -40,6 +41,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path(@item)
     else
+      set_select_data
       render :edit, status: :unprocessable_entity
     end
   end
@@ -48,4 +50,13 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:product_name, :text, :price, :category_id, :state_id, :burden_id, :prefecture_id, :days_id, :image)
   end
+
+  def set_select_data
+    @categories = Category.all
+    @states = State.all
+    @burdens = Burden.all
+    @prefectures = Prefecture.all
+    @days = Days.all
+  end
+  
 end
