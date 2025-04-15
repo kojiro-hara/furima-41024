@@ -25,4 +25,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_unless_owner
+    Rails.logger.debug "=== DEBUG: @item.user_id = #{@item.user_id} ==="
+    Rails.logger.debug "=== DEBUG: current_user.id = #{current_user.id} ==="
+  
+    unless @item.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
+
 end
