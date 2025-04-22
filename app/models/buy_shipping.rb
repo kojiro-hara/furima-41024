@@ -4,12 +4,14 @@ class BuyShipping
 
   with_options presence: true do
     validates :token
-    validates :post_code_id, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+    validates :post_code_id, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/,message: "is invalid. Enter it as follows (e.g. 123-4567)"}
     validates :city
     validates :house_number
-    validates :telephone, format: { with: /\A\d{10,11}\z/ }
+    validates :telephone, format: { with: /\A\d{10,11}\z/,message:"Input only number"},
+                          length: { minimum: 10, too_short: "is too short" }
   end
-  validates :prefecture_id, numericality: {other_than: 0}
+  
+  validates :prefecture_id, numericality: {other_than: 0,message: "can't be blank"}
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
