@@ -1,7 +1,7 @@
 class CreateShippings < ActiveRecord::Migration[7.1]
   def change
     create_table :shippings do |t|
-      t.string  :postal_code,    null: false
+      t.string  :post_code_id,   null: false
       t.integer :prefecture_id,  null: false
       t.string  :city,           null: false
       t.string  :house_number,   null: false

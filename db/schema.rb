@@ -71,7 +71,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_20_064515) do
   end
 
   create_table "shippings", charset: "utf8", force: :cascade do |t|
-    t.string "postal_code", null: false
+    t.string "post_code_id", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.string "house_number", null: false
