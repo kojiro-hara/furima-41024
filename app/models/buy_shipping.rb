@@ -9,6 +9,8 @@ class BuyShipping
     validates :house_number
     validates :telephone, format: { with: /\A\d{10,11}\z/,message:"Input only number"},
                           length: { minimum: 10, too_short: "is too short" }
+    validates :user_id
+    validates :item_id
   end
   
   validates :prefecture_id, numericality: {other_than: 0,message: "can't be blank"}
