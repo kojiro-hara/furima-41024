@@ -55,7 +55,7 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| post_code_id  | string     | null: false, ActiveHash        |
+| post_code_id  | string     | null: false,                   |
 | prefecture_id | integer    | null: false, ActiveHash        |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |

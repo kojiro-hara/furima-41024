@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :show, :destroy]
   before_action :redirect_unless_owner, only: [:edit, :update, :destroy]
   before_action :set_select_data, only: [:edit, :update]
-
+  before_action :move_to_top_if_invalid_edit, only: [:edit, :update]
 
   def index
     @items = Item.all.order(created_at: :desc)
@@ -68,5 +68,9 @@ class ItemsController < ApplicationController
     @burdens = Burden.all
     @prefectures = Prefecture.all
     @days = Days.all
+  end
+
+  def move_to_top_if_invalid_edit
+    redirect_to root_path if current_user != @item.user || @item.buy.present?
   end
 end
