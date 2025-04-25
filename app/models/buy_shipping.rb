@@ -4,7 +4,7 @@ class BuyShipping
 
   with_options presence: true do
     validates :token
-    validates :post_code_id, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/,message: "is invalid. Enter it as follows (e.g. 123-4567)"}
+    validates :post_code_id, format: {with: /\A[0-9]{3}-[0-9]{4}\z/,message: "is invalid. Enter it as follows (e.g. 123-4567)"}
     validates :city
     validates :house_number
     validates :telephone, format: { with: /\A\d{10,11}\z/,message:"Input only number"},

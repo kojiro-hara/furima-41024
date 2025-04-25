@@ -85,6 +85,12 @@ RSpec.describe BuyShipping, type: :model do
         @buy_shipping.valid?
         expect(@buy_shipping.errors.full_messages).to include("Item can't be blank")
       end
+
+      it 'tokenが空では購入できない' do
+        @buy_shipping.token = nil
+        @buy_shipping.valid?
+        expect(@buy_shipping.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end

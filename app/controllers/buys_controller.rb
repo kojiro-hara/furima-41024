@@ -6,14 +6,13 @@ class BuysController < ApplicationController
 
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-    @item = Item.find(params[:item_id])
     @prefectures = Prefecture.all
     @buy = Buy.new
     @buy_shipping = BuyShipping.new 
   end
 
   def new
-    @buy_shipping = BuyShipping.new
+
   end
 
   def create
